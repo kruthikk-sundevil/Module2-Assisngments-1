@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fruits List</title>
+</head>
+<body>
+  <h1>Fruits List</h1>
+  <ul>
+    <% fruits.forEach(fruit => { %>
+      <li><%= fruit %></li>
+    <% }); %>
+  </ul>
+  <form method="POST" action="/add">
+    <label for="fruit">Add a new fruit:</label>
+    <input type="text" id="fruit" name="fruit" required>
+    <button type="submit">Add</button>
+  </form>
+</body>
+</html>
