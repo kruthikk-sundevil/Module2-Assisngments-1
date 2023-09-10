@@ -1,31 +1,31 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3000; // You can change the port as needed
 
-app.set('view engine', 'ejs');
+// Middleware to parse request body
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
 
-const books = [
-  { title: 'Book 1', author: 'Author 1', publicationYear: 2020 },
-  { title: 'Book 2', author: 'Author 2', publicationYear: 2018 },
-];
+// Set the view engine to EJS
+app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  res.render('index', { books });
+// Serve static files (CSS, JS, images, etc.) if needed
+// app.use(express.static('public'));
+
+// Route to render the "books.ejs" template
+app.get('/books', (req, res) => {
+    res.render('books');
 });
 
-app.get('/add', (req, res) => {
-  res.render('add');
+// Route to handle form submission
+app.post('/submit', (req, res) => {
+    const { title, author } = req.body;
+    // You can process the form data here as needed
+
+    // Render the "userInfo.ejs" template with user information
+    res.render('userInfo', { title, author });
 });
 
-app.post('/add', (req, res) => {
-  const { title, author, publicationYear } = req.body;
-  const newBook = { title, author, publicationYear: parseInt(publicationYear) };
-  books.push(newBook);
-  res.redirect('/');
-});
-
+// Start the server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`); // 3000
+    console.log(`Server is running on port ${port}`);
 });

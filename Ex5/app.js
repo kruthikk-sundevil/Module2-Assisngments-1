@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -14,7 +14,7 @@ function simulateAsyncOperation() {
 }
 
 app.get('/', async (req, res) => {
-  res.render('index');
+  res.render('async');
 });
 
 app.get('/simulate', async (req, res) => {

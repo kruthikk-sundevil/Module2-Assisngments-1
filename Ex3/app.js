@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +18,7 @@ app.post('/submit', (req, res) => {
   // Create a new user object using the constructor function
   const newUser = new User(name, parseInt(age), email);
 
-  res.render('result', { newUser }); // Pass the user object to the result template
+  res.render('userInfo', { newUser }); // Pass the user object to the result template
 });
 
 app.listen(port, () => {
